@@ -1,38 +1,44 @@
 package br.com.jrpbjr.arquivoposicional.exceptions;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
 public class ErrorMessage {
     private String line;
     private String error;
 
+    // Construtor vazio (substitui @NoArgsConstructor)
+    public ErrorMessage() {
+    }
+
+    // Construtor com Integer e String
     public ErrorMessage(int linha, String message) {
         this.line = String.valueOf(linha);
         this.error = message;
     }
 
+    // Construtor com String e String
     public ErrorMessage(String linha, String message) {
         this.line = linha;
         this.error = message;
     }
 
+    // Getters e Setters manuais
     public String getLine() {
         return this.line;
-    }
-
-    public String getError() {
-        return this.error;
     }
 
     public void setLine(String line) {
         this.line = line;
     }
 
+    public String getError() {
+        return this.error;
+    }
+
     public void setError(String error) {
         this.error = error;
     }
 
+    // Método equals
+    @Override
     public boolean equals(final Object o) {
         if (o == this) return true;
         if (!(o instanceof ErrorMessage)) return false;
@@ -47,10 +53,13 @@ public class ErrorMessage {
         return true;
     }
 
+    // Método auxiliar para comparação
     protected boolean canEqual(final Object other) {
         return other instanceof ErrorMessage;
     }
 
+    // Método hashCode
+    @Override
     public int hashCode() {
         final int PRIME = 59;
         int result = 1;
@@ -61,6 +70,8 @@ public class ErrorMessage {
         return result;
     }
 
+    // Método toString
+    @Override
     public String toString() {
         return "ErrorMessage(line=" + this.getLine() + ", error=" + this.getError() + ")";
     }
